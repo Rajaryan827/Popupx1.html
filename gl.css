@@ -1,0 +1,175 @@
+  /* Basic reset and body styles */
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: 'Roboto', sans-serif; /* Using a common Google font */
+    background-color: #f1f3f4; /* Mimicking the background */
+  }
+  
+  /* containerxgmail for the login form */
+  .containerxgmail {
+    max-width: 330px;
+    height: auto;
+    position: relative;
+    margin: 50px auto;
+    margin-top: 2%;
+    text-align: center;
+    font-family: 'Teko';
+    color: #000;
+    border-radius: 10px;
+    padding: 40px;
+    background-color: #fff;
+   
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    text-align: center; 
+  }
+  
+  /* Google logo */
+  .logo {
+      width: 120px; /* Adjust as needed */
+      height: auto; 
+      margin-bottom: 20px; 
+    }
+  
+  /* "Welcome" heading */
+  h2 {
+    color: #202124;
+    font-size: 24px;
+    margin-bottom: 20px;
+    font-weight: 400; 
+  }
+  
+  /* Email containerxgmail styles */
+  .email-containerxgmail {
+      display: flex;
+      align-items: center; 
+      background-color: #f1f3f4;
+      border-radius: 4px;
+      padding: 10px 15px; 
+      margin-bottom: 20px; 
+  }
+  
+.emailxgmail {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  margin-bottom: 5px;
+  font-size: 14px;
+  color: #5f6368;
+}
+
+.email-icon {
+  background-color: #1a73e8;
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 8px;
+  overflow: hidden;
+}
+
+.email-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.email-text {
+  font-size: 14px;
+  color: #5f6368;
+}
+
+.dropdown {
+  font-size: 14px;
+  color: #5f6368;
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+  /* Form elements */
+  form label {
+    display: block; 
+    text-align: left;  
+    margin-bottom: 5px;
+    font-size: 14px; 
+    color: #5f6368;
+  }
+  
+  form input[type="password"], 
+  form input[type="submit"] {
+    width: 100%;
+    padding: 12px; 
+    margin-bottom: 15px; 
+    border: 1px solid #dadce0; 
+    border-radius: 4px;
+    box-sizing: border-box; 
+    font-size: 16px; 
+  }
+  
+  form input[type="password"]:focus {
+    outline: none; 
+    box-shadow: 0 0 0 2px rgba(66, 133, 244, 0.3); 
+  }
+  
+  /* Show password checkbox styles */
+  .password-options {
+    display: flex; 
+    align-items: center; 
+    margin-bottom: 15px;
+    text-align: left;  
+  }
+  
+  .password-options input[type="checkbox"] {
+    margin-right: 8px; 
+    width: auto;  
+  }
+  
+  .password-options label {
+    display: inline; 
+    font-size: 14px;
+    color: #5f6368;
+  }
+  
+  /* "Next" button styles */
+  form input[type="submit"] {
+      background-color: #1a73e8;
+      color: white;
+      cursor: pointer; 
+      border: none;  
+    }
+  
+  /* "Forgot password?" link styles */
+  form a {
+      color: #1a73e8; 
+      text-decoration: none;
+      font-size: 14px;
+    }
+  
+  /* Footer styles */
+  footer {
+      text-align: center;
+      margin-top: 40px;
+      padding: 20px;
+      background-color: #ffffff; 
+  }
+  footer .language {
+      color: #5f6368;
+      font-size: 14px;
+      margin-bottom: 10px;
+  }
+  
+  footer ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      display: inline-flex; 
+      gap: 20px;      
+  }
+  
+  footer ul li a {
+      color: #5f6368;
+      text-decoration: none;
+      font-size: 14px;
+  }
